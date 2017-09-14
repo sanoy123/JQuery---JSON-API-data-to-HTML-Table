@@ -1,0 +1,36 @@
+<html>
+<head>
+</head>
+<body>
+    <div id="container">
+							<h3 data-localize="news_updates">Populate Data</h3>
+                <table border=1  class="data">
+                  <tr>
+                    <td>User ID</td>
+                    <td>Title</td>
+                    <td>Body</td>
+                  </tr>
+              </table>
+	  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var end_point;
+        end_point = 'https://jsonplaceholder.typicode.com/posts';
+        function populate_data(end_point) {
+           $.getJSON(end_point, function(data) {
+               html = '';
+               header='';
+                   for (i=0; i<data.length; i++) {
+                     html='<tr><td>'+data[i].userId+'</td><td>'+data[i].title+'</td><td>'+data[i].body+'</td></tr>';
+                     $('#container .data').append(html);
+                   }
+
+           });
+       }
+      populate_data(end_point);
+    });
+   </script>
+
+</body>
+<html>
